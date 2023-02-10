@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface</title>
+</head>
+
+<body>
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    </div>
+  </div>
+</header>
+
+<div class="container mt-3">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <div class="d-flex">
+        <input class="form-control me-2" type="search" id="search" placeholder="ID в БД"
+               aria-label="Поиск">
+        <button class="btn btn-outline-success" type="button" onclick="submitHandler()">Поиск</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row justify-content-md-center">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">OrderUID</th>
+        <th scope="col">TrackNumber</th>
+        <th scope="col">Entry</th>
+        <th scope="col">Locale</th>
+        <th scope="col">InternalSignature</th>
+        <th scope="col">CustomerID</th>
+        <th scope="col">DeliveryService</th>
+        <th scope="col">Shardkey</th>
+        <th scope="col">SmID</th>
+        <th scope="col">DateCreated</th>
+        <th scope="col">OofShard</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ .OrderUID }}</td>
+        <td>{{ .TrackNumber }}</td>
+        <td>{{ .Entry }}</td>
+        <td>{{ .Locale }}</td>
+        <td>{{ .InternalSignature }}</td>
+        <td>{{ .CustomerID }}</td>
+        <td>{{ .DeliveryService }}</td>
+        <td>{{ .Shardkey }}</td>
+        <td>{{ .SmID }}</td>
+        <td>{{ .DateCreated }}</td>
+        <td>{{ .OofShard }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+<script>
+  function submitHandler() {
+    let searchValue = document.getElementById('search').value;
+    if (searchValue != "") {
+      window.location = "http://localhost:3333/orders/" + searchValue
+    }
+  }
+</script>
+</html>
